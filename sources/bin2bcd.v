@@ -24,7 +24,7 @@
 
 
 module bin2bcd(
-    input [14:0] A,
+    input [13:0] A,
     output [3:0] ONES,
     output [3:0] TENS,
     output [3:0] HUNDREDS,
