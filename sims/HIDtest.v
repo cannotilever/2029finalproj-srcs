@@ -26,9 +26,10 @@ reg kbddat;
 reg clk;
 wire [7:0] decoded;
 wire [4:0] kbout;
-wire state;
+wire [3:0] rand;
 HID h(kbdclk,kbddat,decoded);
-kbdWrapper k(clk,kbdclk,kbddat,kbout,state);
+kbdWrapper k(clk,kbdclk,kbddat,kbout);
+randomLFSR rng(clk,rand);
 initial begin
 //should transmit F0 followed by 2B (keycode F)
 kbdclk=1;

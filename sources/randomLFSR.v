@@ -8,8 +8,8 @@ module randomLFSR(
 	
 	reg [7:0] temp;
 	always @ (posedge clk) begin
-	temp <= (lfsr ^ (lfsr >> 1) ^ (lfsr >> 3) ^ (lfsr >> 5)) & 1; // lfsr bitshift xor
-	lfsr <= (lfsr >> 1) | (temp << 7);
+	temp = (lfsr ^ (lfsr >> 1) ^ (lfsr >> 3) ^ (lfsr >> 5)) & 1; // lfsr bitshift xor
+	lfsr = (lfsr >> 1) | (temp << 7);
 	end
 	assign d = lfsr[5:2];
 
