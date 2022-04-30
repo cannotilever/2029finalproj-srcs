@@ -23,7 +23,7 @@
 module HID(
     input kbdclk,
     input dat,
-    output [7:0] keycode
+    output [1:0] keycode
     );
 reg [10:0] recvd;
 reg [3:0] index = 0;

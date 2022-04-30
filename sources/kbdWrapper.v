@@ -23,19 +23,21 @@ module kbdWrapper(
 input clk,
     input kbdclk, //passthrough to HID
     input kbddat, //passthrough to HID
-    output [4:0] out
+    output reg [4:0] letter,
+    output sta
 );
-wire [7:0] keycode;
+wire [0:7] keycode;
 reg state=0;
-reg [4:0] letter;
+//reg [4:0] letter;
 HID ps2(kbdclk,kbddat,keycode);
 always @ (posedge clk) begin
-    if(state==0) begin
-    state = (keycode == 8'hF0); //only listens after key release
-    //letter = 32; //uninitialized
-    end
-    else begin
-    state = 0;
+//    if(state==0) begin
+//    state = (keycode == 8'hF0); //only listens after key release
+//    letter = 32; //uninitialized
+//    end
+//    else begin
+//    state = 0;
+        state = 1;
         case(keycode)
         8'h1C: letter<=0;
         8'h32: letter<=1;
@@ -54,12 +56,10 @@ always @ (posedge clk) begin
         8'h1B: letter<=14;
         8'h35: letter<=15;
         default:
-            if(keycode!=8'h12 && keycode!=8'h59) begin
                 letter<=16; //invalid
-                state = 1;
-                end
         endcase
-     end
+//     end
 end
-assign out = letter;
+//assign out = letter;
+//assign sta = state;
 endmodule
