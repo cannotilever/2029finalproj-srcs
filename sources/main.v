@@ -12,10 +12,10 @@ module main(
     input kbdclk,
     input kbddat,
     output [3:0] an,
-    output [6:0] seg,
+    output [0:6] seg,
     output [4:0] LED
     );
-    assign an = 4'b1100;
+    assign an = 4'b1110;
     wire [4:0] Letter;
    // wire [3:0] ones, tens, hundreds, thousands;
    // wire [13:0] timerout;

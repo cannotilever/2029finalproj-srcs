@@ -1,6 +1,6 @@
 module LDF(
 input [4:0] d,
-	output reg [0:6] seg
+	output reg [6:0] seg
 	);
 //reg [6:0] seg;
 always @ (d) begin
