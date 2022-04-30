@@ -21,7 +21,7 @@ module main(
    // wire [13:0] timerout;
     kbdWrapper kb(clk,kbdclk,kbddat,Letter);
 //    bin2bcd b2b(timerout,ones,tens,hundreds,thousands);
-    letter7seg lss(Letter,seg);
+    LDF lss(Letter,seg);
     //number7seg nss (Letter,seg);
     assign LED[0] = ~Letter[0];
     assign LED[1] = ~Letter[1];
