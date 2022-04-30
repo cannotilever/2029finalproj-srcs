@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 data = input("Enter binary string: ")
 bindat = []
 clk=True
@@ -8,6 +9,7 @@ def wait(tm):
     for i in range(0,tm+1):
         print("clk={};\n#1;".format(int(clk)))
         clk = not clk
+bindat.reverse()
 bindat.insert(0,0)
 bindat.append(1)
 bindat.append(1)

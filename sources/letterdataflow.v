@@ -23,7 +23,7 @@ case (d)
 15: seg <= 7'h3B;
 32: seg <= seg;
 default:
-seg <= 7'b1111111;
+seg <= 7'b0101010;
 endcase
 end
 endmodule

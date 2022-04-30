@@ -26,7 +26,7 @@ input clk,
     output reg [4:0] letter,
     output sta
 );
-wire [0:7] keycode;
+wire [7:0] keycode;
 reg state=0;
 //reg [4:0] letter;
 HID ps2(kbdclk,kbddat,keycode);
@@ -55,8 +55,11 @@ always @ (posedge clk) begin
         8'h2D: letter<=13;
         8'h1B: letter<=14;
         8'h35: letter<=15;
+        //special cases
+        8'hF0: letter<=17;
+        8'hAA: letter<=17;
         default:
-                letter<=16; //invalid
+                letter<=32; //invalid
         endcase
 //     end
 end
