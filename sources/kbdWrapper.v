@@ -52,7 +52,7 @@ always @ (posedge clk) begin
         8'h15: letter<=14; // q
         8'h2D: letter<=15; // r
         8'h1B: letter<=16; // s
-        8'h3C: letter <=17 // u
+        8'h3C: letter<=17; // u
         8'h35: letter<=18; // y
 
         //special cases
