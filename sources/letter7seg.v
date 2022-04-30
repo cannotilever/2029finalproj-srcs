@@ -22,8 +22,7 @@
 
 module letter7seg(
 input [3:0] d,
-	output [6:0] seg,
-	output [3:0] an
+	output [6:0] seg
 	);
 
 	/*
@@ -44,8 +43,6 @@ input [3:0] d,
 	14 s
 	15 y
 	*/
-
-	assign an=4'b1110;
 	assign seg[6] = (~d[3] & ~d[0]) | (~d[3] & d[2] & ~d[1]) | (d[2] & ~d[0]);
 	assign seg[5] = (~d[2] & ~d[1] & ~d[0]) | (~d[3] & d[1] & d[0]) | (d[2] & d[1] & d[0]) | (d[3] & ~d[1] & ~d[0]);
 	assign seg[4] = (~d[3] & ~d[2] & ~d[1]) | (~d[2] & ~d[1] & ~d[0]) | (d[1] & d[0]) | (d[2] & d[1]) | (d[3] & d[1]);
