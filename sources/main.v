@@ -32,6 +32,7 @@ module main(
     LDF lss(Letter,segm1);
     timer st(clk,timercontrol,timerout);
     slowClock slck(clk,slowclock);
+    dispMux dpmulti(clk,state,segm0,segm1,segm2,anm0,anm1,anm2,seg,an);
     showLoss shlss(slowclock, segm2, anm2);
     
     always @ (posedge clk) begin
