@@ -36,24 +36,24 @@ always @ (posedge clk) begin
 //    else begin
 //    state = 0;
         case(keycode)
-        8'h1C: letter<=1;
-        8'h32: letter<=2;
-        8'h21: letter<=3;
-        8'h23: letter<=4;
-        8'h24: letter<=5;
-        8'h2B: letter<=6;
-        8'h34: letter<=7;
-        8'h33: letter<=8;
-        8'h3B: letter<=9;
-        8'h4B: letter<=10;
-        8'h31: letter<=11;
-        8'h44: letter<=12;
-        8'h4D: letter<=13; // P
-        8'h15: letter<=14; // q
-        8'h2D: letter<=15; // r
-        8'h1B: letter<=16; // s
-        8'h3C: letter<=17; // u
-        8'h35: letter<=18; // y
+        8'h1C: letter=1;
+        8'h32: letter=2;
+        8'h21: letter=3;
+        8'h23: letter=4;
+        8'h24: letter=5;
+        8'h2B: letter=6;
+        8'h34: letter=7;
+        8'h33: letter=8;
+        8'h3B: letter=9;
+        8'h4B: letter=10;
+        8'h31: letter=11;
+        8'h44: letter=12;
+        8'h4D: letter=13; // P
+        8'h15: letter=14; // q
+        8'h2D: letter=15; // r
+        8'h1B: letter=16; // s
+        8'h3C: letter=17; // u
+        8'h35: letter=18; // y
 
         //special cases
         8'hF0: letter<=20;

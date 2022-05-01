@@ -23,9 +23,5 @@ module main(
 //    bin2bcd b2b(timerout,ones,tens,hundreds,thousands);
     LDF lss(Letter,seg);
     //number7seg nss (Letter,seg);
-    assign LED[0] = ~Letter[0];
-    assign LED[1] = ~Letter[1];
-    assign LED[2] = ~Letter[2];
-    assign LED[3] = ~Letter[3];
-    assign LED[4] = ~Letter[4];
+    assign LED = Letter;
 endmodule

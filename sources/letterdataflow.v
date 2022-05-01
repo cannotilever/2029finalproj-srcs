@@ -23,9 +23,9 @@ case (d)
 16: seg <= 7'b0100100; // S
 17: seg <= 7'b1000001; // U
 18: seg <= 7'b1000100; // Y
-32: seg <= seg;
+20: seg <= seg;
 default:
-seg <= 7'b0101010;
+seg <= 7'b1110111;
 endcase
 end
 endmodule
