@@ -21,12 +21,14 @@ module main(
     wire [4:0] Letter;
     reg [4:0] lastLetter;
     reg [1:0] timercontrol = 2'b01; //MSB=enable LSB=reset
+    wire [4:0] timerout;
     reg [4:0] goalLetter;
    // wire [3:0] ones, tens, hundreds, thousands;
    // wire [13:0] timerout;
     kbdWrapper kb(clk,kbdclk,kbddat,Letter);
 //    bin2bcd b2b(timerout,ones,tens,hundreds,thousands);
     LDF lss(Letter,seg);
+    timer st(clk,timercontrol,timerout);
     
     always @ (posedge clk) begin
     case (state) 
