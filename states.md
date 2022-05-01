@@ -19,7 +19,7 @@ If any other keycode goto state 3
 
 displaymode = alpha
 
-#3
+# 3
 Lose screen
 
 Displays "LoSS" on 7 segment display

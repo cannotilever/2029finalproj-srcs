@@ -3,25 +3,21 @@
 
 module timer(input clk, 
 input [1:0] ctrl, 
-output [3:0] tmout);
+output reg [3:0] tmout);
 reg [4:0] tmp;
-reg [4:0] tmr;
-always @ (posedge clk) begin
-case (ctrl)
-1:
-    tmp = 0;
-    tmr = 0;
 
-2:
-    tmp = tmp+1;
-    if (tmp == 12) begin
-    tmr = tm+1;
-    tmp = 0;
-    end
-default:
-    tmr = tmr;
-    tmp = tmp;
-endcase
+always @ (posedge clk) begin
+    if (ctrl == 2'b01) begin
+        tmp = 0;
+        tmout = 0;
+        end
+    else if (ctrl == 2'b10) begin
+        tmp = tmp +1;
+        if (tmp == 12) begin
+            tmout = tmout +1;
+            tmp = 0;
+            end
+        end
+
 end
-assign tmout = tm;
 endmodule
