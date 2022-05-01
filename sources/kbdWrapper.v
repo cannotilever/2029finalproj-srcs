@@ -56,8 +56,8 @@ always @ (posedge clk) begin
         8'h35: letter=18; // y
 
         //special cases
-        8'hF0: letter<=20;
-        8'hAA: letter<=20;
+        8'hF0: letter=21;
+        8'hAA: letter=20;
         default:
                 letter<=32; //invalid
         endcase
