@@ -24,15 +24,19 @@ module HIDtest();
 reg kbdclk;
 reg kbddat;
 reg clk;
+reg [1:0] tmrctrl;
 wire [7:0] decoded;
+wire [4:0] timerout;
 wire [4:0] kbout;
 wire [3:0] rand;
 HID h(kbdclk,kbddat,decoded);
 kbdWrapper k(clk,kbdclk,kbddat,kbout);
 randomLFSR rng(clk,rand);
+timer tmr(clk,tmrctrl,timerout);
 initial begin
 //should transmit F0 followed by 2B (keycode F)
 kbdclk=1;
+tmrctrl = 2'b00;
 clk=1;
 #1;
 clk=0;
@@ -119,6 +123,7 @@ clk=1;
 #1;
 clk=0;
 #1;
+tmrctrl = 2'b10;
 clk=1;
 #1;
 clk=0;
@@ -221,6 +226,7 @@ clk=1;
 clk=0;
 #1;
 clk=1;
+
 #1;
 kbddat=0;
 kbdclk=0;

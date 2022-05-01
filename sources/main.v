@@ -17,18 +17,22 @@ module main(
     );
     reg [0:1] state = 0; //see states.md
     reg [0:1] target = 0;
-    assign an = 4'b1110; //temporary
     wire [4:0] Letter;
     reg [4:0] lastLetter;
     reg [1:0] timercontrol = 2'b01; //MSB=enable LSB=reset
     wire [4:0] timerout;
     reg [4:0] goalLetter;
+    wire slowclock;
+    wire [6:0] segm0,segm1,segm2;
+    wire [3:0] anm0,anm1,anm2;
    // wire [3:0] ones, tens, hundreds, thousands;
    // wire [13:0] timerout;
     kbdWrapper kb(clk,kbdclk,kbddat,Letter);
 //    bin2bcd b2b(timerout,ones,tens,hundreds,thousands);
-    LDF lss(Letter,seg);
+    LDF lss(Letter,segm1);
     timer st(clk,timercontrol,timerout);
+    slowClock slck(clk,slowclock);
+    showLoss shlss(slowclock, segm2, anm2);
     
     always @ (posedge clk) begin
     case (state) 

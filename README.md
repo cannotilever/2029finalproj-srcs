@@ -11,9 +11,9 @@ Does **not** work with USB-C keyboards through a C-to-A adapter!!
 - HID: Complete
 - Keyboard Wrapper: Complete
 - Letter 7 segment: Complete
-- Timer system: In progress
-- Timer display : In progress
+- Timer system: Complete
+- Timer display : In progress 
 - Status output: Pending...
-- game loop: Pending...
+- game loop: In progress
 
 Important TODO: impliment thousands in bin2BCD
