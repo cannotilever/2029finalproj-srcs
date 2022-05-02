@@ -15,17 +15,17 @@ module dispMux(
 );
 always @ (negedge clk) begin
 case (mode)
-0: begin
-    seg = segm0;
-    an = anm0;
-    end
+//0: begin
+//    seg = segm0;
+//    an = anm0;
+//    end
 2: begin
     seg = segm1;
-    an = anm0;
+    an = 4'b1110;
     end
 3: begin
-    seg = segm1;
-    an = anm1;
+    seg = segm2;
+    an = anm2;
     end
 default://illegal state
     begin
