@@ -30,12 +30,12 @@ module main(
     wire dpm0;
     kbdWrapper kb(clk,kbdclk,kbddat,Letter);
     LDF lss(goalLetter,segm1);
-    timer st(slowclock,timercontrol,timers,timerms,timermms);
+    timer st(slowclock,clk,timercontrol,timers,timerms,timermms);
     slowClock slck(clk,slowclock);
     dispMux dpmulti(clk,state,segm0,segm1,segm2,anm0,anm1,anm2,dpm0,seg,an,dp);
     showLoss shlss(slowclock, segm2, anm2);
     randomLFSR rng(clk, randout);
-    showWin(slowclock,timers,timerms,timermms,segm0,anm0,dpm0);
+    showWin(clk,slowclock,timers,timerms,timermms,segm0,anm0,dpm0);
     always @ (posedge clk) begin
     case (state) 
     0: // Win or start condition
@@ -64,7 +64,6 @@ module main(
                 target = 0;
             end
             else begin
-                target = 3;
             end
         end
         else begin
@@ -82,5 +81,5 @@ module main(
     endcase
     lastLetter = Letter;
     end
-    assign LED = state;
+    assign LED = timercontrol;
 endmodule
