@@ -18,6 +18,7 @@ module main(
     );
     reg [0:1] state = 0; //see states.md
     reg [0:1] target = 0;
+    reg [22:0] badstate = 0;
     wire [4:0] Letter;
     reg [4:0] lastLetter;
     reg [1:0] timercontrol = 2'b01; //MSB=enable LSB=reset
@@ -39,6 +40,8 @@ module main(
     always @ (posedge clk) begin
     case (state) 
     0: // Win or start condition
+    begin
+    badstate = 0;
         if (Letter == 21) begin //checks for key release
             state = 1;
             target = 2;
@@ -47,16 +50,18 @@ module main(
         else begin
         timercontrol = 2'b00;
         end
-        
+        end
     1: // consume keyup code
         begin
-       if (Letter !=21 && Letter !=lastLetter) begin
+        badstate = badstate + 1;
+       if (Letter !=21 && Letter !=lastLetter || badstate == 8000000) begin
        state = target;
        end
        goalLetter = randout;
        end
     2: //gameplay
     begin
+        badstate = 0;
         if (Letter != lastLetter) begin
         timercontrol = 2'b00;
         state = 1;
@@ -64,6 +69,7 @@ module main(
                 target = 0;
             end
             else begin
+            target = 3;
             end
         end
         else begin
@@ -72,6 +78,7 @@ module main(
         end
     3: //loss
     begin
+    badstate = 0;
      if(Letter != lastLetter) begin
      state = 1;
      target = 2;
